@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<form method = 'POST' action = '/update_review/{{review.id}}'>
+  {{form.hidden_tag()}}
+  {{form.rating.label}} {{form.rating()}}
+  {{form.submit()}}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+{% endblock %}

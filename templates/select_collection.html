@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h4>"{{ collection.title }}" Collection</h4>
+<ul>
+  {% for a in restaurants %}
+    Restaurant: <b>{{ a.name }}</b>
+    <ul>
+    <li> Rating: {{ a.rating }} <br>
+    {% if a.price == 3 %}
+      Price: Expensive </li><br>
+    {% elif a.price == 2 %}
+      Price: Moderate <br>
+    {% else %}
+      Price: Cheap<br>
+    {% endif %}
+    </ul>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}

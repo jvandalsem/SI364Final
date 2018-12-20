@@ -1,0 +1,28 @@
+
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>All Searched Restaurants</h2>
+<ul>
+  {% for a in all_restaurants %}
+    Restaurant: <b>{{ a.name }}</b><br>
+    <ul>
+    <li> Rating: {{ a.rating }} <br>
+    {% if a.price == 3 %}
+      Price: Expensive <br>
+    {% elif a.price == 2 %}
+      Price: Moderate <br>
+    {% else %}
+      Price: Cheap <br>
+    {% endif %}
+    </ul>
+  {% endfor %}
+</ul>
+
+{% if not all_restaurants %}
+There are no searched restaurants to show.
+{% endif %}
+
+<a href="{{ url_for('index')}}">Return to search for new restaurants</a>
+
+{% endblock %}

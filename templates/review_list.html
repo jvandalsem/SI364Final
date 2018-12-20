@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block nav %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<b>{{ review.title }}</b>
+<ul>
+    Review: <i>"{{ review.text }}"<br></i>
+    Rating: <i>{{ review.rating }}</i>
+    <form method = 'POST' action = '/update_review/{{review.id}}'>
+    {{form.submit()}}
+    </form>
+
+</ul>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out of {{current_user.username}}</a>
+{% else %}
+    <b><a href="{{ url_for('login') }}">Sign In</a></b>
+{% endif %}
+<h1><i> Ann Arbor Restaurants </h1></i>
+{% block nav %}
+<ul>
+    <li><a href="{{ url_for('index') }}">Search for restaurants</a>
+    <li><a href="{{ url_for('all_restaurants') }}">See all restaurants</a></li>
+    <li><a href="{{ url_for('create_collection') }}">Create a restaurant collection</a></li>
+    <li><a href="{{ url_for('user_collections') }}">See your restaurant collections</a></li>
+    <li><a href="{{ url_for('create_review') }}">Create a restaurant review</a></li>
+    <li><a href="{{ url_for('user_reviews') }}">See your restaurant reviews</a></li>
+    </ul>
+<p>-----------------------------------------------------------------------------------------------------------------</p>
+{% endblock %}
+{% block content %}
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.search.label }} {{ form.search() }}
+	{{ form.submit() }}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+{% endblock %}

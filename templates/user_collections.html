@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block nav %}
+ {{ super() }}
+{% endblock %}
+
+{% block content %}
+<h2>My Restaurant Collections</h2>
+{% if user_collections|length == 0 %}
+You have 0 saved restaurant collections :(
+{% endif %}
+<ul>
+{% for a in user_collections %}
+    <li><a href="http://localhost:5000/collection/{{ a.title }}">{{ a.title }}</a>
+    <form method = 'GET' action = '/delete/{{ a.id }}'>
+    {{form.submit()}}
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
